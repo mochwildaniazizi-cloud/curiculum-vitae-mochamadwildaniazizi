@@ -1,0 +1,192 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-glass);
+  transition: box-shadow 0.3s ease, background 0.4s ease;
+}
+
+.header.scrolled {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+}
+
+.inner {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+/* Logo */
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.logoDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Nav */
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2.2rem;
+}
+
+.navLink {
+  font-weight: 500;
+  font-size: 0.93rem;
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+  position: relative;
+  display: inline-block;
+  padding: 0.4rem 0;
+  text-decoration: none;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.navLink:hover,
+.navLink.active {
+  color: var(--text-main);
+}
+
+.navLink.active::after,
+.navLink:hover::after {
+  width: 100%;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+/* Accent picker */
+.accentDropdown {
+  position: relative;
+}
+
+.colorDot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: block;
+  transition: box-shadow 0.3s ease;
+}
+
+.accentMenu {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  background: var(--bg-glass-heavy);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-glass);
+  padding: 0.75rem;
+  border-radius: 12px;
+  display: flex;
+  gap: 0.75rem;
+  box-shadow: 0 10px 30px var(--shadow);
+  transform: translateY(8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.accentMenu.show {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.accentOption {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.accentOption:hover {
+  transform: scale(1.2);
+}
+
+.accentActive {
+  border-color: var(--text-main) !important;
+  transform: scale(1.15) !important;
+}
+
+/* Mobile btn — hidden on desktop */
+.mobileBtn {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobileBtn {
+    display: inline-flex;
+  }
+
+  .nav {
+    position: fixed;
+    top: 76px;
+    left: 0;
+    width: 100%;
+    background: var(--bg-glass-heavy);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-glass);
+    padding: 2rem;
+    transform: translateY(-110%);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 99;
+  }
+
+  .nav.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .navLink {
+    font-size: 1.1rem;
+  }
+}

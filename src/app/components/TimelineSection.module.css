@@ -1,0 +1,174 @@
+.section {
+  padding: 8rem 0;
+  background: rgba(var(--accent-rgb), 0.01);
+  position: relative;
+  z-index: 1;
+}
+
+/* Switcher */
+.switcher {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 4rem;
+}
+
+.switchBtn {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  color: var(--text-muted);
+  padding: 0.75rem 2rem;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.switchBtn:hover {
+  color: var(--text-main);
+  border-color: var(--border-glass-hover);
+}
+
+.switchActive {
+  background: var(--accent) !important;
+  color: var(--text-inverse) !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 4px 16px var(--accent-glow);
+}
+
+/* Timeline wrapper */
+.timelineWrapper {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* List */
+.list {
+  position: relative;
+  padding-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  animation: fadeInUp 0.5s ease both;
+}
+
+/* Left vertical line */
+.list::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 6px;
+  height: 100%;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  opacity: 0.3;
+}
+
+/* Item */
+.item {
+  position: relative;
+}
+
+.marker {
+  position: absolute;
+  left: -2rem;
+  top: 1.6rem;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 8px var(--accent-glow);
+  transition: transform 0.3s ease, background 0.3s ease;
+  display: block;
+}
+
+.item:hover .dot {
+  transform: scale(1.4);
+  background: var(--accent);
+}
+
+/* Card */
+.card {
+  padding: 1.8rem 2rem;
+  transition: transform 0.3s ease, border-color 0.3s ease !important;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  left: -7px;
+  top: 1.4rem;
+  width: 12px;
+  height: 12px;
+  background: var(--bg-glass);
+  border-left: 1px solid var(--border-glass);
+  border-bottom: 1px solid var(--border-glass);
+  transform: rotate(45deg);
+  transition: border-color 0.3s ease;
+}
+
+.item:hover .card {
+  transform: translateX(6px);
+  border-color: rgba(var(--accent-rgb), 0.3) !important;
+}
+
+.item:hover .card::before {
+  border-color: rgba(var(--accent-rgb), 0.3);
+}
+
+.period {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  background: rgba(var(--accent-rgb), 0.1);
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: 4px;
+  margin-bottom: 0.8rem;
+}
+
+.role {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.org {
+  font-weight: 600;
+  font-size: 0.88rem;
+  margin-bottom: 0.9rem;
+}
+
+.desc {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 600px) {
+  .switcher {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .switchBtn {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+  }
+
+  .card {
+    padding: 1.4rem 1.5rem;
+  }
+}

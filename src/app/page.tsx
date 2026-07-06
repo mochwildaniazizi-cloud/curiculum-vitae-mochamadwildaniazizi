@@ -1,4 +1,3 @@
-import dynamic from 'next/dynamic';
 import HeroSection from './components/HeroSection';
 import AboutSection from './components/AboutSection';
 import TimelineSection from './components/TimelineSection';
@@ -7,17 +6,14 @@ import ProjectsSection from './components/ProjectsSection';
 import ContactSection from './components/ContactSection';
 import Header from './components/Header';
 import Footer from './components/Footer';
-
-// ParticleCanvas is purely visual — load it without SSR to avoid hydration mismatch
-const ParticleCanvas = dynamic(() => import('./components/ParticleCanvas'), {
-  ssr: false,
-});
+// Client wrapper that handles dynamic import with ssr:false (not allowed in Server Components)
+import ParticleCanvasWrapper from './components/ParticleCanvasWrapper';
 
 export default function HomePage() {
   return (
     <>
-      {/* Fixed interactive particle background */}
-      <ParticleCanvas />
+      {/* Fixed interactive particle background (client-side only) */}
+      <ParticleCanvasWrapper />
 
       {/* Sticky glassmorphism header */}
       <Header />

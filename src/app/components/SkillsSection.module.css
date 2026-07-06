@@ -1,0 +1,105 @@
+.section {
+  padding: 8rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Filter buttons */
+.filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 3.5rem;
+}
+
+.filterBtn {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  color: var(--text-muted);
+  padding: 0.55rem 1.4rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filterBtn:hover {
+  color: var(--text-main);
+  border-color: var(--border-glass-hover);
+}
+
+.filterActive {
+  background: var(--accent) !important;
+  color: var(--text-inverse) !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 4px 14px var(--accent-glow);
+}
+
+/* Skills grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.4rem;
+  animation: fadeInUp 0.4s ease both;
+}
+
+/* Skill card */
+.card {
+  padding: 1.6rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px var(--shadow) !important;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.skillName {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.skillPct {
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 0.92rem;
+  flex-shrink: 0;
+}
+
+/* Progress bar */
+.progressBg {
+  width: 100%;
+  height: 7px;
+  background: var(--border-glass);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent) 0%, #a855f7 100%);
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.35);
+  transition: width 1.2s cubic-bezier(0.1, 1, 0.1, 1);
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filters {
+    gap: 0.6rem;
+  }
+}
